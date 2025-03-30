@@ -27,7 +27,7 @@
   "primaryTokenAttribute": "attributes.might", 
   "secondaryTokenAttribute": "attributes.agility",
   "url": "URL_TO_YOUR_SYSTEM_REPO_OR_WEBSITE (Optional)", 
-  "manifest": "URL_TO_THIS_MANIFEST_FILE (Optional, for updates)",
+  "manifest": "https://raw.githubusercontent.com/nirufe/fabulaRPG/refs/heads/main/fabula_system/system.json",
   "download": "URL_TO_A_ZIP_DOWNLOAD (Optional)",
   "license": "LICENSE_INFO (e.g., MIT)",
   "templateVersion": 2,
