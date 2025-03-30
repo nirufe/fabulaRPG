@@ -1,0 +1,37 @@
+/* Add basic styling for your sheets here */
+.fabula-system .sheet-header {
+  /* Example */
+  flex: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.fabula-system .profile-img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+  border: none;
+}
+
+.fabula-system .header-fields {
+  flex: 1;
+}
+
+.fabula-system .attribute {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 2px;
+}
+
+.fabula-system .stress-input {
+    width: 50px; /* Make stress input smaller */
+    text-align: center;
+    margin: auto; /* Center it */
+}
+
+/* Add more styles for tabs, inputs, lists etc. */

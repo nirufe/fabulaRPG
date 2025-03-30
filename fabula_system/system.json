@@ -1,0 +1,88 @@
+{
+  "name": "fabula-system",
+  "title": "Fabula System",
+  "description": "A Foundry VTT system based on the Fabula ruleset, loosely inspired by YZE.",
+  "version": "0.1.0",
+  "author": "Niklas Freidwall",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11" 
+  },
+  "esmodules": [
+    "module/fabula-system.js" 
+  ],
+  "styles": [
+    "css/fabula-system.css" 
+  ],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "gridDistance": 1,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "attributes.might", 
+  "secondaryTokenAttribute": "attributes.agility",
+  "url": "URL_TO_YOUR_SYSTEM_REPO_OR_WEBSITE (Optional)", 
+  "manifest": "URL_TO_THIS_MANIFEST_FILE (Optional, for updates)",
+  "download": "URL_TO_A_ZIP_DOWNLOAD (Optional)",
+  "license": "LICENSE_INFO (e.g., MIT)",
+  "templateVersion": 2,
+  "socket": false, 
+  "initiative": "@attributes.agility.value", 
+  "actorTypes": ["character"],
+  "itemTypes": ["skill", "specialization", "quirk", "weapon", "armor", "shield"],
+  "system": "fabula-system",
+   "template": {
+    "Actor": {
+      "character": {
+        "attributes": {
+          "might": { "value": 1, "max": 5, "stress": 0 },
+          "agility": { "value": 1, "max": 5, "stress": 0 },
+          "mind": { "value": 1, "max": 5, "stress": 0 },
+          "verve": { "value": 1, "max": 5, "stress": 0 }
+        },
+         "details": {
+            "size": "Medium",
+            "kindred": ""
+         }
+      }
+    },
+    "Item": {
+       "skill": {
+          "level": 0,
+          "attribute": "might", 
+          "isAdvanced": false,
+          "description": ""
+       },
+       "specialization": {
+          "level": 1,
+          "skill": "", 
+          "description": ""
+       },
+       "quirk": {
+           "level": 1,
+           "description": ""
+       },
+       "weapon": {
+           "mightReq": 0,
+           "bonus": 0,
+           "isRanged": false,
+           "notes": ""
+       },
+       "armor": {
+           "mightReq": 0,
+           "armorRating": 0,
+           "notes": ""
+       },
+       "shield": {
+           "mightReq": 0,
+           "armorRating": 0,
+           "notes": ""
+       }
+    }
+  }
+}

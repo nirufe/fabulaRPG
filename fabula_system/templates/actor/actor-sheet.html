@@ -1,0 +1,100 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>
+      <div class="grid grid-3col">
+         <div class="resource">
+             <label>Kindred</label>
+             <input type="text" name="system.details.kindred" value="{{system.details.kindred}}" data-dtype="String"/>
+         </div>
+          <div class="resource">
+             <label>Size</label>
+             <input type="text" name="system.details.size" value="{{system.details.size}}" data-dtype="String"/>
+          </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="attributes">Attributes & Skills</a>
+    <a class="item" data-tab="combat">Combat</a>
+    <a class="item" data-tab="items">Inventory</a>
+    <a class="item" data-tab="description">Description</a>
+  </nav>
+
+  <section class="sheet-body">
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+       <h2>Attributes</h2>
+        <div class="grid grid-4col">
+            {{#each system.attributes as |attr key|}}
+            <div class="attribute flexcol">
+                <label class="resource-label rollable" data-roll-type="attribute" data-roll-key="{{key}}">{{localize key}}</label>
+                <input type="number" name="system.attributes.{{key}}.value" value="{{attr.value}}" data-dtype="Number"/>
+                 <label class="resource-label">Stress: {{attr.stress}} / {{attr.value}}</label> 
+                 <input type="number" name="system.attributes.{{key}}.stress" value="{{attr.stress}}" data-dtype="Number" class="stress-input"/>
+            </div>
+            {{/each}}
+        </div>
+       <hr>
+       <h2>Skills</h2>
+       {{!-- You'll list owned Skill Items here later --}}
+       <div class="items-list">
+            <li class="item flexrow item-header">
+              <div class="item-name">Name</div>
+              <div class="item-controls">
+                <a class="item-control item-create" title="Create skill" data-type="skill"><i class="fas fa-plus"></i> Add</a>
+              </div>
+            </li>
+           {{#each actor.items as |item id|}}
+             {{#if (eq item.type "skill")}}
+             <li class="item flexrow" data-item-id="{{item._id}}">
+                 <div class="item-name rollable" data-roll-type="skill" data-item-id="{{item._id}}"><h4>{{item.name}}</h4></div>
+                 <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                 </div>
+             </li>
+             {{/if}}
+           {{/each}}
+       </div>
+       {{!-- Add sections for Specializations and Quirks similarly --}}
+    </div>
+
+    <div class="tab combat" data-group="primary" data-tab="combat">
+       <h2>Combat Stats</h2>
+       {{!-- Display derived stats like Armor Rating, Dodge/Parry base values here later --}}
+        <hr>
+        <h2>Weapons</h2>
+        {{!-- List owned Weapon Items --}}
+         <div class="items-list">
+             <li class="item flexrow item-header">
+              <div class="item-name">Name</div>
+               <div class="item-controls">
+                <a class="item-control item-create" title="Create weapon" data-type="weapon"><i class="fas fa-plus"></i> Add</a>
+              </div>
+            </li>
+           {{#each actor.items as |item id|}}
+             {{#if (eq item.type "weapon")}}
+              <li class="item flexrow" data-item-id="{{item._id}}">
+                 <div class="item-name"><h4>{{item.name}}</h4> (Bonus: {{item.system.bonus}})</div>
+                 <div class="item-controls">
+                    <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                 </div>
+             </li>
+             {{/if}}
+           {{/each}}
+        </div>
+        {{!-- Add sections for Armor and Shields --}}
+    </div>
+
+     <div class="tab items" data-group="primary" data-tab="items">
+        {{!-- Generic inventory section --}}
+     </div>
+
+    <div class="tab description" data-group="primary" data-tab="description">
+      {{editor system.details.biography target="system.details.biography" button=true owner=owner editable=editable}}
+    </div>
+  </section>
+</form>

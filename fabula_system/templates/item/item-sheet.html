@@ -1,0 +1,78 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Item Name"/></h1>
+    </div>
+  </header>
+
+  <div class="sheet-body">
+     <div class="form-group">
+        <label>Description</label>
+        <textarea name="system.description">{{system.description}}</textarea>
+     </div>
+
+     {{!-- Specific fields based on item type --}}
+     {{#if (eq item.type "skill")}}
+     <div class="form-group">
+        <label>Level</label>
+        <input type="number" name="system.level" value="{{system.level}}" data-dtype="Number"/>
+     </div>
+     <div class="form-group">
+         <label>Linked Attribute</label>
+         <select name="system.attribute">
+             {{#select system.attribute}}
+             <option value="might">Might</option>
+             <option value="agility">Agility</option>
+             <option value="mind">Mind</option>
+             <option value="verve">Verve</option>
+             {{/select}}
+         </select>
+     </div>
+      <div class="form-group">
+        <label>Is Advanced?</label>
+        <input type="checkbox" name="system.isAdvanced" {{checked system.isAdvanced}}/>
+     </div>
+     {{/if}}
+
+     {{#if (eq item.type "specialization")}}
+      <div class="form-group">
+        <label>Level (I=1, II=2, III=3)</label>
+        <input type="number" name="system.level" value="{{system.level}}" data-dtype="Number"/>
+     </div>
+      <div class="form-group">
+        <label>Parent Skill (Name)</label> {{!-- Manual entry for now --}}
+        <input type="text" name="system.skill" value="{{system.skill}}" data-dtype="String"/>
+     </div>
+     {{/if}}
+
+     {{#if (eq item.type "quirk")}}
+      <div class="form-group">
+        <label>Level (I=1, II=2, III=3)</label>
+        <input type="number" name="system.level" value="{{system.level}}" data-dtype="Number"/>
+     </div>
+     {{/if}}
+
+      {{#if (eq item.type "weapon")}}
+       <div class="form-group">
+        <label>Might Req</label>
+        <input type="number" name="system.mightReq" value="{{system.mightReq}}" data-dtype="Number"/>
+     </div>
+       <div class="form-group">
+        <label>Bonus</label>
+        <input type="number" name="system.bonus" value="{{system.bonus}}" data-dtype="Number"/>
+     </div>
+      <div class="form-group">
+        <label>Is Ranged?</label>
+        <input type="checkbox" name="system.isRanged" {{checked system.isRanged}}/>
+     </div>
+      <div class="form-group">
+        <label>Notes</label>
+        <input type="text" name="system.notes" value="{{system.notes}}" data-dtype="String"/>
+     </div>
+     {{/if}}
+
+     {{!-- Add similar blocks for armor and shield --}}
+
+  </div>
+</form>
